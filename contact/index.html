@@ -230,7 +230,12 @@
           <!-- {/* Applied animation delay */} -->
           <p id="contact-email" class="mb-1"></p>
           <p id="contact-whatsapp" class="mb-1"></p>
-          <p id="contact-phone" class="mb-1"></p>
+          <p id="contact-phone-display" class="mb-1">
+            Phone: +218 943458888(Libya)
+          </p>
+          <p id="contact-phone-display" class="mb-1">
+            Phone: +213 798587072(Algeria)
+          </p>
           <p id="footer-company" class="mt-2"></p>
         </div>
 
@@ -239,7 +244,7 @@
           <div
             class="inline-block w-24 h-10 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-xs mx-auto"
           >
-            <img src="https://islouis.com/contact/wct-logo.svg" alt="Whale Cloud" srcset="Whale Cloud" />
+            <img src="wct-logo.svg" alt="Whale Cloud" srcset="Whale Cloud" />
           </div>
         </div>
       </div>
@@ -257,8 +262,9 @@
             "Whale Cloud Technology Co., Ltd is a leading technology company specializing in digital transformation solutions and services for telecommunication service providers and enterprises. We offer comprehensive BSS/OSS, Big Data, and Cloud Computing solutions globally.",
           avatarUrl: "https://placehold.co/120x120/E0E7FF/4F46E5?text=LL", // Replace with actual avatar URL if available
           email: "liu.haodong2@iwhalecloud.com",
-          whatsappNumber: "+447421735190", // Include country code, no spaces or symbols
-          phoneNumber: "+218943458888", // Include country code
+          whatsappNumber: "+44 7421735190", // Include country code, no spaces or symbols
+          phoneNumber_0: "+218 943458888", // Include country code
+          phoneNumber_1: "+213 798587072", // Include country code
           companyWebsite: "https://www.iwhalecloud.com/",
           vCard: {
             firstName: "Louis",
@@ -277,8 +283,9 @@
             "浩鲸云计算科技股份有限公司（简称“浩鲸科技”）是一家全球领先的数字化技术和服务的提供商，致力于帮助全球客户实现向数字经济的跨越。公司成立于2003年，迄今已为全球80多个国家和地区的电信运营商、公共服务部门及其他行业客户提供优质的数字化转型解决方案和产品服务。",
           avatarUrl: "https://placehold.co/120x120/E0E7FF/4F46E5?text=刘", // Placeholder with Chinese character
           email: "liu.haodong2@iwhalecloud.com",
-          whatsappNumber: "+447421735190",
-          phoneNumber: "+218943458888",
+          whatsappNumber: "+44 7421735190",
+          phoneNumber_0: "+218 943458888",
+          phoneNumber_1: "+213 798587072",
           companyWebsite: "https://www.iwhalecloud.com/",
           vCard: {
             firstName: "皓东", // Chinese first name
@@ -348,7 +355,7 @@
         // Update footer contact info
         contactEmailEl.textContent = `Email: ${langConfig.email}`;
         contactWhatsappEl.textContent = `WhatsApp: ${langConfig.whatsappNumber}`;
-        contactPhoneEl.textContent = `Phone: ${langConfig.phoneNumber}`;
+        // contactPhoneEl.textContent = `Phone: ${langConfig.phoneNumber}`;
         footerCompanyEl.textContent = `© ${new Date().getFullYear()} ${
           langConfig.company
         }`;
@@ -368,7 +375,8 @@
         const lastName = vCardData.lastName || "";
         const org = vCardData.organization || "";
         const title = vCardData.jobTitle || "";
-        const phoneCell = langConfig.phoneNumber || "";
+        const phoneCell_0 = langConfig.phoneNumber_0 || "";
+        const phoneCell_1 = langConfig.phoneNumber_1 || "";
         const phoneWork = vCardData.phoneWork || "";
         const phoneWhatsApp = langConfig.whatsappNumber || "";
         const email = langConfig.email || "";
@@ -381,11 +389,13 @@ N:${lastName};${firstName};;;
 FN:${fullName}
 ORG:${org}
 TITLE:${title}
-${phoneCell ? `TEL;TYPE=CELL:${phoneCell}\n` : ""}${
-          phoneWork ? `TEL;TYPE=WORK,VOICE:${phoneWork}\n` : ""
-        }${phoneWhatsApp ? `TEL;TYPE=WHATSAPP:${phoneWhatsApp}\n` : ""}${
-          email ? `EMAIL:${email}\n` : ""
-        }${website ? `URL:${website}\n` : ""}END:VCARD`.replace(/\n\n/g, "\n");
+${phoneCell_0 ? `TEL;TYPE=CELL:${phoneCell_0}\n` : ""}${
+          phoneCell_1 ? `TEL;TYPE=CELL:${phoneCell_1}\n` : ""
+        }${phoneWork ? `TEL;TYPE=WORK,VOICE:${phoneWork}\n` : ""}${
+          phoneWhatsApp ? `TEL;TYPE=WHATSAPP:${phoneWhatsApp}\n` : ""
+        }${email ? `EMAIL:${email}\n` : ""}${
+          website ? `URL:${website}\n` : ""
+        }END:VCARD`.replace(/\n\n/g, "\n");
 
         const blob = new Blob([card], { type: "text/vcard;charset=utf-8" });
         const url = URL.createObjectURL(blob);
